@@ -10,6 +10,11 @@
   <body>
     <h1>An Exploration of Style Transfer</h1>
     <h4>Rachael Boyle, Tyler Yath</h4>
+      <div class="image-container">
+        <img class="example" src="images/basic_style_transfer/output15/content.jpeg">
+        <img class="example" src="images/basic_style_transfer/output15/style.jpeg">
+        <img class="example" src="images/basic_style_transfer/output15/output.png">
+      </div>
     <div class="main-text">
       <h3>Video</h3>
       <a href="https://youtu.be/MtO_0l4_TDQ">Final Project Video</a>
@@ -32,13 +37,27 @@
           </ol>
         <p>At times, tuning our model to get the results we wanted felt much more like an art than a science. We had a long list of experiments we wanted to explore, and each one of them required a different set of hyperparameters. A crucial aspect of each experiment were the chosen content and style images; these played an important role in the success of an experiment.</p>
         <h4>Implementing Anti Aliasing</h4>
+          <div class="image-container">
+            <img class="example" src="images/anti_aliasing_via_st/aliased_and_anti_aliased/content.png">
+            <img class="example" src="images/anti_aliasing_via_st/aliased_and_anti_aliased/style.png">
+            <img class="example" src="images/anti_aliasing_via_st/aliased_and_anti_aliased/output.png">
+          </div>
           <p>For Anti Aliasing, we first began by simply using identical aliased and anti aliased images as content and style, which worked extremely well! However, we felt that this was a bit unfair, so we then began to experiment with using various style images to see if we could find a general anti aliasing style image. We discovered that what worked best was a antialiased pattern that contained similar features and colors of the aliased content image.</p>
         <h4>Implementing Image Relighting</h4>
+          <div class="">
+            <div class="image-container">
+              <img class="example" src="images/image_relighting/space_needle/content.jpeg">
+              <img class="example" src="images/image_relighting/space_needle/style.jpg">
+              <img class="example" src="images/image_relighting/space_needle/output.png">
+            </div>
+          </div>
           <p>For Image Relighting, we took a similar approach to anti aliasing and found that similar and identical images worked well. We were able to achieve impressive results on identical images taken under different lighting conditions as well as similar images taken under different lighting conditions. A potential way to extend the results of anti aliasing and image relighting are to perform style transfer on separate masks of the image, rather than the entire image.</p>
         <h4>Implementing Texture Mapping</h4>
           <p>For texture mapping, we looked online for a blender file containing an animal model with a texture map. Once we found one (using sites such as free3d), we downloaded the model and rendered it in blender. We were relatively unfamiliar with blender, so we watched a couple tutorials on how to input a nice scenic background for our penguin render and how to map our newly style transferred textures onto the penguin. We ran our penguin’s texture map through our model using a variety of styles until we got results with satisfying features results. These ended up being due to paintings with very distinct styles and textures (i.e. with visible and thick brush strokes) that we could easily see these features on the texture map itself.</p>
         <h4>Implementing Stereoscopic Style Transfer</h4>
           <p>We began by implementing a naive version of stereoscopic style transfer, which involved simply just applying our style transfer model to the left and right stereoscopic images separately. This worked surprisingly well, but it did cause some fatigue, as the style transferred images had small discrepancies that had a noticeable effect on the depth information within the image. A way to extend this implementation would be to implement a spatial loss function, that enforces a depth constraint in order to preserve the depth component of the image.</p>
+        <h4>Making the VR App</h4>
+          <p>To make the VR Viewer, we used Unity and the Google VR SDK. Google’s SDK made it very simple to get a basic VR Scene up and running. They abstract the left and right cameras into a unified VR camera with head tracking that makes it easy to plug into any generic Unity Scene. The most complicated aspect was finding a way to view the 360 stereoscopic images. A simple way to do this is to map each image onto the inside of a sphere that surrounds the camera, and to send the left and right eyes their respective image spheres. However, after implementing this we fund that our implementation wasn’t quite robust enough, so we utilized a 360 stereoscopic shader from the Unity Asset store that can be found <a href="https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/vr-eye-shaders-88499">here</a>.</p>
         <h4>Failed Experiments</h4>
           <p>During our graphics exploration, we also had many failed experiments that produced fun and interesting results!</p>
           <p>First, we investigated whether we could transfer global illumination through inputting two images with and without it as our style and content images respectively. However, our model did not pick up interesting portions of light.</p>
@@ -88,11 +107,6 @@
               <img class="example" src="images/basic_style_transfer/output12/content.jpg">
               <img class="example" src="images/basic_style_transfer/output12/style.jpg">
               <img class="example" src="images/basic_style_transfer/output12/output.png">
-            </div>
-            <div class="image-container">
-              <img class="example" src="images/basic_style_transfer/output15/content.jpeg">
-              <img class="example" src="images/basic_style_transfer/output15/style.jpeg">
-              <img class="example" src="images/basic_style_transfer/output15/output.png">
             </div>
             <div class="image-container">
               <img class="example" src="images/basic_style_transfer/output17/content.jpeg">
@@ -170,6 +184,9 @@
           </li>
           <li>
             <a href="https://developers.google.com/vr/develop/unity/get-started-ios">Google VR SDK</a>
+          </li>
+          <li>
+            <a href="https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/vr-eye-shaders-88499">VR Eye Shaders</a>
           </li>
           <li>
             <a href="https://www.youtube.com/watch?v=il7ajiCepus">Blender Resource</a>
